@@ -18,6 +18,8 @@ public class Menu {
             case 10: menu_10(); break;
             case 11: menu_11(); break;
             case 12: menu_12(); break;
+            case 13: menu_13(); break;
+            case 13: menu_14(); break;
             
             
         }
@@ -36,6 +38,8 @@ public class Menu {
         System.out.println("10) Calcular N tablas de multiplicar");
         System.out.println("11) Cajero");
         System.out.println("12) Figuras");
+        System.out.println("13) Registro de notas");
+        System.out.println("14) Comprobar si un arreglo es creciente, decreciente o desordenado");
         
         
         System.out.print("Ingrese su opcion: ");
@@ -289,5 +293,136 @@ public class Menu {
                     System.out.println("");
                   }
        }
+   }
+   public static void menu_13(){
+       Scanner sc = new Scanner(System.in);
+       int opcion, alumnos, aprobados = 0, desaprobados = 0, posicion;
+       double suma = 0, promedio, mayor_nota = 0, menor_nota = 0;
+       boolean encontrado = false;
+          System.out.print("Ingrese cantidad de alumnos: ");
+          alumnos = sc.nextInt();
+          double notas[] = new double[alumnos];
+       do{
+       System.out.println("Registro de alumnos");
+       System.out.println("1) Ingresar notas");
+       System.out.println("2) Ver notas");
+       System.out.println("3) Ver aprobados");
+       System.out.println("4) Ver desaprobados");
+       System.out.println("5) Ver la mayor nota");
+       System.out.println("6) Ver la menor nota");
+       System.out.println("7) Ver el promedio de notas");
+       System.out.println("8) Buscar una nota");
+       System.out.println("9) Reemplezar nota en otra posicion");
+       System.out.println("10) Salir");
+       System.out.print("Ingrese opcion: ");
+       opcion = sc.nextInt();
+            switch(opcion){
+                case 1:
+                    for(int i = 0; i < alumnos; i++){
+                        System.out.print("Alumno " + (i + 1) + ": ");
+                        notas[i] = sc.nextDouble();
+                    }
+                    break;
+                case 2: 
+                    System.out.println("Las notas de los alumnos son: ");
+                    for(int i = 0; i < alumnos; i++){
+                        System.out.println("Nota " + (i +1) + ": " + notas[i]);
+                    }
+                    break;
+                case 3: 
+                    System.out.println("Notas aprobadas: ");
+                    for(int i = 0; i < alumnos; i++){
+                    if(notas[i] >= 12.5){
+                        System.out.println("Nota " + (i +1) + ": " + notas[i]);
+                        aprobados++;
+                    }
+                    else
+                        desaprobados++;
+                    }
+                    break;
+                case 4: 
+                    System.out.println("Notas desaprobadas: ");
+                    for(int i = 0; i < alumnos; i++){
+                        if(notas[i] < 12.5){
+                            System.out.println("Nota " + (i + 1) + ": " + notas[i]);
+                            desaprobados++;
+                        }
+                        else
+                            aprobados++;
+                    }
+                    break;
+                case 5: 
+                    System.out.println("La mayor nota");
+                    for(int i = 0; i < alumnos; i++){
+                        if(notas[i] > mayor_nota){
+                            mayor_nota = notas[i];
+                        }
+                    }
+                    System.out.println("La nota más alta de los alumnos registrados es: " + mayor_nota);
+                    break;
+                case 6: 
+                    System.out.println("La menor nota");
+                    menor_nota = notas[0];
+                    for(int i = 1; i < alumnos; i++){
+                        if(notas[i] < menor_nota){
+                            menor_nota = notas[i];
+                        }
+                    }
+                    System.out.println("La nota más baja de los alumnos registrados es: " + menor_nota);
+                    break;
+                case 7: 
+                    System.out.println("Promedio de las notas: ");
+                    for(int i = 0; i < alumnos; i++){
+                        suma += notas[i];
+                    }
+                    promedio = (suma / alumnos);
+                    System.out.println("El promedio de las notas es: " + promedio);
+                    break;
+                case 8:
+                    System.out.print("Buscar una nota con una posicion: ");
+                    posicion = sc.nextInt();
+                    for(int i = 0; i < alumnos; i++){
+                        if(i == posicion){
+                            System.out.println("La nota en la posicion " + (i + 1) + " es: " + notas[i]);
+                            encontrado = true;
+                            break;
+                        }
+                    }
+                    if(encontrado == false)
+                        System.out.println("No hay ninguna nota en esa posicion");
+                    break;
+                case 9:
+                    System.out.println("Reemplezar nota");
+                    System.out.print("Ingrese nuevo valor: ");
+                    int valor = sc.nextInt();
+                    System.out.print("Ingrese nueva posicion: ");
+                    int nueva_posicion = sc.nextInt();
+                    for(int i = 0; i < alumnos; i++){
+                        if(nueva_posicion == i){
+                            notas[i] = valor;
+                            break;
+                        }
+                    }
+            }
+      }while(opcion != 10);
+   }
+   public static void menu_14(){
+       Scanner sc = new Scanner(System.in);
+       int tamaño;
+       boolean creciente = false, decreciente = false;
+       System.out.println("Comprobaremos si un arreglo es creciente, decreciente o desordenado");
+       System.out.print("Ingrese el tamaño del arreglo: ");
+       tamaño = sc.nextInt();
+       double arreglo[] = new double[tamaño];
+       for(int i = 0; i < tamaño; i++){
+           System.out.print("Numero " + i + ": ");
+           arreglo[i] = sc.nextDouble();
+       }
+       for(int i = 0; i < tamaño; i++){
+           
+       }
+       
+       
+       
    }
 }
